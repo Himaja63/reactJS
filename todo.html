@@ -15,7 +15,8 @@
                     super(props);
                     this.state = {
                         tasks : [],
-                        input : ""
+                        input : "",
+                        check: false
                     }
                 }
                 render() {
@@ -27,7 +28,7 @@
                                     <li key = {i}>
                                         <button data-index = {i} onClick = {this.deleteTask}>delete</button>
                                         {task}
-                                        <input type="checkbox"/>
+                                        <input onChange={() =>this.checkBoxTest()} type="checkbox"/>
                                     </li>
                                 )}
                             </ul>
@@ -73,6 +74,11 @@
                             tasks : tasks
                         };
                     }) 
+                }
+                checkBoxTest() {
+                    this.setState ({
+                    check:!this.state.check
+                    })
                 }
             }
             ReactDOM.render(<App/>, document.querySelector("#app"))
